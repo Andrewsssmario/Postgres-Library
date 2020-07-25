@@ -1,0 +1,5 @@
+pytz
+sqlalchemy
+gunicorn
+flask
+psycopg2

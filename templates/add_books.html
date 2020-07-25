@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}
+Add a Book!
+{% endblock %}
+{% block body %}
+<h1 style="text-align:center">Add a book!</h1>
+<form action="/create_book" method="post">
+	<input type="text" id="name" name="name" placeholder="name">
+	<input type="text" id="author"name="author" placeholder="author">
+	<input type="text" id="year"name="year" placeholder="year">
+	<input type="submit" value="Create!">
+</form>
+<a href="/">Go Back</a>
+<script>
+	document.querySelector("form").onsubmit=function(){
+		let name=document.querySelector("#name").value;
+		let author=document.querySelector("#author").value;
+		let year=document.querySelector("#year").value;
+		alert(name+" "+author+" "+year);
+		if (name && year && author){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+</script>
+
+{% endblock %}

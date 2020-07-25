@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Query
+{% endblock %}
+
+{% block body %}
+<h1 style="text-align:center">QUERY</h1>
+<input type="text" placeholder="Title/Author" id="value">
+<ul>
+
+</ul>
+<a href="/create_author">Add a new Author!</a>
+<a href="/create_book">Add a new title!</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+	document.onkeyup=function(){
+		input=document.querySelector("#value").value;
+		if (input!=""){
+			$.get("/"+input, function(data){
+				document.querySelector("ul").innerHTML=data;
+			});
+		}
+	}
+</script>
+{% endblock %}

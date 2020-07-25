@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{book[1]}}
+{% endblock %}
+{% block body %}
+<h1 style="text-align:center">{{book[1]}}</h1>
+<h2>Name: {{book[1]}}</h2>
+<h2>Author: <a href="/author?q={{author[0]}}">{{author[1]}}</a></h2>
+<h2>Year Written: {{book[3]}}</h2>
+<a href="/">Go back</a>
+{% endblock %}

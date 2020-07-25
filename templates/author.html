@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+{{author[0][1]}}
+{% endblock %}
+{% block body %}
+<h1 style="text-align:center">AUTHOR: {{author[0][1]}}</h1>
+<h2>Name: {{author[0][1]}}</h2>
+<h2>Id: {{author[0][0]}}</h2>
+<h1>Books Written</h1>
+<ul>
+{% for i in books %}
+	<a href="/book?q={{i[0]}}">{{i[1]}}, {{i[3]}}</a>
+	<br>
+{% endfor %}
+<ul>
+<a href="/">Go Back</a>
+{% endblock %}

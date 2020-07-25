@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}
+Add an Author!
+{% endblock %}
+
+{% block body %}
+<h1 style="text-align:center">Add an Author!</h1>
+
+<form action="/create_author" method="post">
+	<input type="text"id="name" name="name" placeholder="name">
+	<input type="submit" value="create!">
+</form>
+<script>
+	document.querySelector("form").onsubmit=function(){
+		if (document.querySelector("#name").value){
+			return true;	
+		}
+		else{
+			return false;
+		}
+	}
+</script>
+
+{% endblock %}
