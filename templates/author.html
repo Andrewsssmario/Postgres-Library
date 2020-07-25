@@ -14,4 +14,8 @@
 {% endfor %}
 <ul>
 <a href="/">Go Back</a>
+{% for i in range(3) %}
+	<br>
+{% endfor %}
+<a href="/delete_author?q={{author[0][0]}}">---DELETE AUTHOR---</a>
 {% endblock %}

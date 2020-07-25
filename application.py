@@ -73,5 +73,29 @@ def create_book():
 
 @app.route("/create_author", methods=["GET", "POST"])
 def create_author():
+	if request.method=="GET":
+		return render_template("add_authors.html")
+	name=request.form.get("name")
+	if not name:
+		return render_template("add_authors.html")
+	same= db.execute("SELECT * FROM authors WHERE name=:name", {"name": name}).fetchall()
+	if len(same)!=0:
+		return render_template("add_authors.html")
+	db.execute("INSERT INTO authors(name) VALUES(:name)", {"name": name})
+	db.commit()
+	return redirect("/")
+@app.route("/delete_author")
+def delete_author():
+	id=int(request.args.get("q"))
+	db.execute("DELETE FROM books WHERE author_id=:id", {"id": id})
+	db.execute("DELETE FROM authors WHERE id=:id", {"id": id})
+	db.commit()
+	return redirect("/")
 
-	return "author"
+@app.route("/delete_book")
+def delete_book():
+	id=int(request.args.get("q"))
+	db.execute("DELETE FROM books WHERE id=:id", {"id":id})
+	db.commit()
+	return redirect("/")
+
